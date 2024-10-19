@@ -3,51 +3,55 @@ import axios from "axios"
 import { NavLink } from "react-router-dom"
 
 export default function List() {
-    const [jenisSampah, setJenisSampah] = useState([])
+    const [ProsesDaurUlang, setProsesDaurUlang] = useState([])
     useEffect(() => {
-        axios.get("https://project-api-daur-ulang.vercel.app/api/api/jenisSampah")
+        axios.get("https://project-api-daur-ulang.vercel.app/api/api/prosesDaurUlang")
             .then((response) => {
                 console.log(response.data.result)
-                setJenisSampah(response.data.result)
+                setProsesDaurUlang(response.data.result)
             })
             .catch(error => {
                 console.log('Error : ', error)
             })
     }, [])
 
+
     return (
-        <>
-            <h2>Jenis Sampah</h2>
+        <div>
 
-            {/* Button tambah Jenis Sampah */}
-            <NavLink to="/jenisSampah/create" className="btn btn-primary my-4">+ Tambah</NavLink>
-
+           
+            <h2>Proses Daur Ulang</h2>
+            <NavLink to="/prosesDaurUlang/create" className="btn btn-primary my-4">+ Tambah</NavLink>
             <ul className="list-group">
-               <table className="table table-success table-striped-columns">
+                {
+                    <table className="table table-success table-striped-columns">
                         <thead>
                             <tr>
-                                <th scope="col">Nama</th>
+                                <th scope="col">Nama Proses</th>
+                                <th scope="col">Jenis Sampah</th>
                                 <th scope="col">Deskripsi</th>
-                                <th scope="col">Cara Daur Ulang</th>
+                                <th scope="col">hari</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                jenisSampah.map((data) => (
+                                ProsesDaurUlang.map((data) => (
                                         <tr key={data.id}>
-                                            <td>{data.namaJenisSampah}</td>
+                                            <td>{data.nama_proses}</td>
+                                            <td>{data.jenis_sampah.namaJenisSampah}</td>
                                             <td>{data.deskripsi}</td>
-                                            <td>{data.cara_Daur_Ulang}</td>
+                                            <td>{data.hari}</td>
                                             <td>
-                                                <NavLink to={`/jenisSampah/edit/${data.id}`} className="btn btn-warning">
+                                                <NavLink to={`/prosesDaurUlang/edit/${data.id}`} className="btn btn-warning">
                                                 Edit </NavLink>
                                             </td>
                                         </tr>
                                 ))}
                         </tbody>
                     </table>
+                }
             </ul>
-        </>
+        </div>
     )
 }
