@@ -26,6 +26,8 @@ export default function CreateFakultas() {
             if (response.status === 201) {
                 setSuccess("Jenis Sampah Berhasil Ditambahkan");
                 setnamaJenis("");
+                setDeskripsi("");
+                setCara_Daur_Ulang("");
             } else {
                 setError("Gagal menambahkan Jenis Sampah");
             }

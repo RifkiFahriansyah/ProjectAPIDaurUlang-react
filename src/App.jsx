@@ -2,9 +2,16 @@ import React, {Suspense} from "react";
 import { BrowserRouter as Router, Route, Routes, NavLink } from "react-router-dom";
 
 const Home = React.lazy(() => import('./components/Home')); 
+
+// Jenis Sampah
 const JenisSampahList = React.lazy(() => import('./components/JenisSampah/List')); 
 const JenisSampahCreate = React.lazy(() => import('./components/JenisSampah/Create'));
 const JenisSampahEdit = React.lazy(() => import("./components/JenisSampah/Edit"))
+
+// Cara Daur Ulang
+const ProsesDaurUlangList = React.lazy(() => import('./components/ProsesDaurUlang/List'));
+const ProsesDaurUlangCreate = React.lazy(() => import('./components/ProsesDaurUlang/Create'));
+const ProsesDaurUlangEdit = React.lazy(() => import('./components/ProsesDaurUlang/Edit'));
 
 
 const App = () => {
@@ -26,7 +33,7 @@ const App = () => {
                 < NavLink className={({ isActive }) => 'nav-link $(isActive ? "active" : "")'} aria-current="page" to="/jenisSampah">jenis Sampah</NavLink>
               </li>
               <li className="nav-item">
-                < NavLink className={({ isActive }) => 'nav-link $(isActive ? "active" : "")'} aria-current="page" to="">Proses Daur Ulang</NavLink>
+                < NavLink className={({ isActive }) => 'nav-link $(isActive ? "active" : "")'} aria-current="page" to="/prosesDaurUlang">Proses Daur Ulang</NavLink>
               </li>
             </ul>
           </div>
@@ -41,6 +48,9 @@ const App = () => {
         <Route path="/jenisSampah" element={<JenisSampahList />}/> {/* Routes ke halaman Jenis Sampah List */}
         <Route path="/jenisSampah/create" element={<JenisSampahCreate />}/> {/* Routes ke halaman Jenis Sampah Create */}
         <Route path="/jenisSampah/edit/:id" element={<JenisSampahEdit />}/> {/* Routes ke halaman Jenis Sampah Edit */}
+        <Route path="/ProsesDaurUlang" element={<ProsesDaurUlangList />}/> {/* Routes ke halaman Cara Daur Ulang List */}
+        <Route path="/ProsesDaurUlang/create" element={<ProsesDaurUlangCreate />}/> {/* Routes ke halaman Cara Daur Ulang Create */}
+        <Route path="/ProsesDaurUlang/edit/:id" element={<ProsesDaurUlangEdit />}/> {/* Routes ke halaman Cara Daur Ulang Edit */}
       </Routes>
       </Suspense>
       <div className="mt-2">&copy; 2024 Mahasiswa</div>
@@ -48,7 +58,7 @@ const App = () => {
 
       {/* Footer */}
     </Router>
-  );
-};
+  )
+}
 
 export default App
