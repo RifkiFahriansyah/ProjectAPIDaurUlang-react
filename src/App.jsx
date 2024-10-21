@@ -13,6 +13,11 @@ const ProsesDaurUlangList = React.lazy(() => import('./components/ProsesDaurUlan
 const ProsesDaurUlangCreate = React.lazy(() => import('./components/ProsesDaurUlang/Create'));
 const ProsesDaurUlangEdit = React.lazy(() => import('./components/ProsesDaurUlang/Edit'));
 
+//Login
+const ProsesLogin = React.lazy(() => import('./components/Login/Login'));
+
+//Register
+const ProsesRegister = React.lazy(() => import('./components/Register/Register'));
 
 const App = () => {
   return (
@@ -35,6 +40,12 @@ const App = () => {
               <li className="nav-item">
                 < NavLink className={({ isActive }) => 'nav-link $(isActive ? "active" : "")'} aria-current="page" to="/prosesDaurUlang">Proses Daur Ulang</NavLink>
               </li>
+              <li className="nav-item">
+                < NavLink className={({ isActive }) => 'nav-link $(isActive ? "active" : "")'} aria-current="page" to="/register">Proses Register</NavLink>
+              </li>
+              <li className="nav-item">
+                < NavLink className={({ isActive }) => 'nav-link $(isActive ? "active" : "")'} aria-current="page" to="/login">Proses Login</NavLink>
+              </li>
             </ul>
           </div>
         </div>
@@ -51,6 +62,9 @@ const App = () => {
         <Route path="/ProsesDaurUlang" element={<ProsesDaurUlangList />}/> {/* Routes ke halaman Cara Daur Ulang List */}
         <Route path="/ProsesDaurUlang/create" element={<ProsesDaurUlangCreate />}/> {/* Routes ke halaman Cara Daur Ulang Create */}
         <Route path="/ProsesDaurUlang/edit/:id" element={<ProsesDaurUlangEdit />}/> {/* Routes ke halaman Cara Daur Ulang Edit */}
+
+        <Route path="/register" element={< ProsesRegister />}/> {/* Routes ke halaman Cara Daur Register */}
+        <Route path="/login" element={< ProsesLogin />}/> {/* Routes ke halaman Cara Daur Login */}
       </Routes>
       </Suspense>
       <div className="mt-2">&copy; 2024 Mahasiswa</div>
